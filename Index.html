@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +10,15 @@
 </head>
 <body>
     <button id="status_p" onclick="connectWallet()">Wallet <span id="status">not Connected</span></button>
-    <!-- <input type="number" placeholder="Sol to send" id="quantity"> -->
+    <button id="status_p" onclick="signInTransactionAndSendMoney()">Debit</button><!-- <input type="number" placeholder="Sol to send" id="quantity"> -->
     <!-- <button onclick="signInTransactionAndSendMoney(10)">Send Money</button> -->
 
     <script>
         var wallet;
+        console.log(solanaWeb3.LAMPORTS_PER_SOL);
         const lamports_per_sol= solanaWeb3.LAMPORTS_PER_SOL;
         function connectWallet(){
+            console.log(window.solana.connect());
             (async() => {
                 try{
                     const resp = await window.solana.connect();
@@ -35,11 +37,11 @@
                 const connection = new solanaWeb3.Connection(network);
                 const transaction = new solanaWeb3.Transaction();
 
-                lamports = 1.5 * lamports_per_sol;
+                lamports = 0.5 * lamports_per_sol;
 
                 try{
                     destPubkeyStr = "6Uxq8XWvbcUzjviUQAmdJKttxq4HpfGv2JCsxVzeubYX"
-                    lamports = 1.5 * lamports_per_sol;
+                    lamports = 0.5 * lamports_per_sol;
 
                     console.log("starting sendMoney");
                     const destPubkey = new solanaWeb3.PublicKey(destPubkeyStr);
